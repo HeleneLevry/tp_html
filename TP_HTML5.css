@@ -1,0 +1,51 @@
+/* TP_HTML5.css */
+
+body{
+	background-color: #cae5ff;
+	color: #615d6c;
+	text-align: left;
+	font-size: 1em;
+	font-family: Verdana, Georgia, Trebuchet, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+h1{
+	color: #7796cb;
+	text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+h2{
+	color: #7796cb;
+	text-align: center;
+	font-size: 1.5em;
+	font-style: oblique;
+	margin: 25px 10px 25px 10px;
+}
+
+h3{
+	color: #7796cb;
+	text-align: left;
+	font-size: 1.2em;
+}
+
+h4{
+	color: #7796cb;
+	text-align: left;
+	font-size: 1em;
+}
+
+p{
+	text-align: justify;
+	line-height: 1.5em;
+}
+
+hr{
+	margin: 20px auto;
+	width: 50%;
+	height: 3px;
+	background-color: #8C8994;
+	border: none;
+}
