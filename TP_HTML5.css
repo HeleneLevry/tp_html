@@ -49,3 +49,7 @@ hr{
 	background-color: #8C8994;
 	border: none;
 }
+
+#canvasWebcam{
+	border: 2px solid black;
+}
