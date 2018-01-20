@@ -28,7 +28,7 @@
 	<canvas id="canvasWebcam">
 		Texte alternatif pour les navigatuers ne supportant pas canvas.
 	</canvas>
-	<img id="myImage" src=""\>
+	<img id="myImage" src=""/>
 
 
 	<script type="text/javascript">
@@ -36,20 +36,29 @@
 	// On load
 	window.onload = function(){
 
-		// Declarations
+		// Declarations ---------------
+		// Elements
 		var canvasWebcam = document.getElementById("canvasWebcam");
-		var video  = document.getElementById('video');
-		var image = document.getElementById('myImage');
+		var video = document.getElementById('video');
+		var myImage = document.getElementById('myImage');
+		// Size
+		var size_img = 100;
+		var size_img_2 = size_img/2;
+		// Image target
 		var img_target = new Image();
+		img_target.src = "target.png";
+		img_target.width = size_img;
+		img_target.height = size_img;
+		// window URL
 		window.URL = window.URL || window.webkitURL;
 		// getUSerMedia
-		navigator.getUserMedia = 
-		(navigator.getUserMedia ||
+		navigator.getUserMedia = (navigator.getUserMedia ||
 			navigator.webkitGetUserMedia ||
 			navigator.mozGetUserMedia ||
 			navigator.msGetUserMedia);
 
-		// Canvas
+		// Canvas ---------------
+		// Get canvas
 		if (!canvasWebcam){
 			alert("Impossible to get the canvas");
 			return;
@@ -66,22 +75,16 @@
 		}
 		
 
-		// CanvasPlayer
+		// CanvasPlayer ---------------
 		function canvasPlayer(){
 			if (myStream) {
 				ctx.drawImage(video, 0, 0, canvasWebcam.width, canvasWebcam.height);
-				// Add to canvas' context
-		// Target
-		img_target.src = "target.png";
-		size_img = 100;
-		size_img_2 = size_img/2;
-		img_target.width = size_img;
-		img_target.height = size_img;
-		ctx.drawImage(img_target,canvasCenterW-size_img_2,canvasCenterH-size_img_2,size_img,size_img);
-		// Filter
-		//ctx.fillStyle = 'rgba(118, 174,42, 0.2)';
-		//ctx.fillRect(0,0,canvasWebcam.width,canvasWebcam.height);
-				// Filter
+				// Add the target at the center
+				ctx.drawImage(img_target,canvasCenterW-size_img_2,canvasCenterH-size_img_2,size_img,size_img);
+				// Filter with fillRect
+				// ctx.fillStyle = 'rgba(118, 174,42, 0.2)';
+				// ctx.fillRect(0,0,canvasWebcam.width,canvasWebcam.height);
+				// Filter by pixel
 				/*var currentImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
 				var pixels = currentImage.data;
           // iterate over all pixels
@@ -91,11 +94,20 @@
             //pixels[i + 2] = 0; // blue
             //pixels[i + 3] = 0; // alpha           
           }
-          //ctx.putImageData(currentImage,0, 0);*/          
+          ctx.putImageData(currentImage,0, 0);*/     
           ctx.fill();         
         }
       }
 
+
+  	// Snapshot
+  	function snapshot(){
+  		if (myStream) {
+  			myImage.src = canvasWebcam.toDataURL('myImage/webp');
+  		}
+  	}
+
+  	video.addEventListener('click', snapshot, false);
 
 		// Video
 		if (navigator.getUserMedia){
@@ -126,9 +138,9 @@
 	</script>
 	<br/>
 
-	<button onclick="getLocation()">geolocation</button>
-		<!--script>
-		var x=document.getElementById("demo");        
+	<button id="geolocation" onclick="getLocation()">Geolocation</button>
+	<script>
+		var x = document.getElementById("geolocation");        
 		function getLocation() {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(showPosition);
@@ -140,8 +152,7 @@
 		function showPosition(position) {
 			x.innerHTML="Latitude: " + position.coords.latitude + "<br/>Longitude: " + position.coords.longitude;           
 		}
-	</script-->
-
+	</script>
 
 
 </body>
