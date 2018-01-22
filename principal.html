@@ -150,7 +150,8 @@
 			}
 		}
 		function showPosition(position) {
-			x.innerHTML="Latitude: " + position.coords.latitude + "<br/>Longitude: " + position.coords.longitude;           
+			var date = new Date();
+			x.innerHTML="Latitude: " + position.coords.latitude + "<br/>Longitude: " + position.coords.longitude+"<br/>Date/Time: "+date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+"\t"+date.getHours()+":"+date.getMinutes();       
 		}
 	</script>
 
