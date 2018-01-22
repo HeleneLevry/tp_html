@@ -24,12 +24,11 @@
 	<hr/>
 
 	<!-- Elements-->
-	<video id="video" autoplay></video>
-	<canvas id="canvasWebcam">
+	<video style="display:none;" id="video" autoplay></video>
+	<canvas id="canvasWebcam" style="">
 		Texte alternatif pour les navigatuers ne supportant pas canvas.
 	</canvas>
-	<img id="myImage" src=""/>
-
+	<img id="myImage" src="">  
 
 	<script type="text/javascript">
 
@@ -100,14 +99,9 @@
       }
 
 
-  	// Snapshot
-  	function snapshot(){
-  		if (myStream) {
-  			myImage.src = canvasWebcam.toDataURL('myImage/webp');
-  		}
-  	}
+  	
 
-  	video.addEventListener('click', snapshot, false);
+  	//video.addEventListener('click', snapshot, false);
 
 		// Video
 		if (navigator.getUserMedia){
@@ -137,8 +131,13 @@
 
 	</script>
 	<br/>
+	<div id="geolocation" style=""></div>
 
-	<button id="geolocation" onclick="getLocation()">Geolocation</button>
+	
+	<button id="save" onclick="">Save</button>
+	<button id="shoot" onclick="shoot()">Shoot</button>
+
+	<button id="reset" onclick="reset()">Reset</button>
 	<script>
 		var x = document.getElementById("geolocation");        
 		function getLocation() {
@@ -151,9 +150,27 @@
 		}
 		function showPosition(position) {
 			var date = new Date();
+			x.style="display:flex;";
 			x.innerHTML="Latitude: " + position.coords.latitude + "<br/>Longitude: " + position.coords.longitude+"<br/>Date/Time: "+date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+"\t"+date.getHours()+":"+date.getMinutes();       
 		}
+		// Snapshot
+  		function snapshot(){
+	  		if (myStream) {
+	  			canvasWebcam.style="display:none;"
+	  			myImage.src = canvasWebcam.toDataURL('myImage/webp');
+	  			myImage.style="display:flex;";
+	  		}
+	  	}
+
+		function shoot(){
+			getLocation();
+			snapshot();
+		}
+
+		function reset(){
+			canvasWebcam.style="display:flex;"
+			myImage.style="display:none;"
+			x.style="display:none;";
+		}
 	</script>
-
-
 </body>
