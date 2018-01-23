@@ -30,33 +30,50 @@
 
 		<!-- Elements-->
 		<video style="display:none;" id="video" autoplay></video>
+		<img id="target" src="target.png">
 
 		<div class="element">
 			<canvas id="canvasWebcam" style="">
 				Texte alternatif pour les navigatuers ne supportant pas canvas.
 			</canvas>
-			<img id="myImage" src="" style="display:none;">  
+			<img id="myImage" src="" style="display:none;">
 		</div>
 
 		<!-- Script onload -->
 		<script type="text/javascript">
 
+		// height 100% navigator ---------------
+		function height(bloc){
+			var hauteur;
+			if( typeof( window.innerWidth ) == 'number' ){
+				hauteur = window.innerHeight;
+			}
+			else if( document.documentElement && document.documentElement.clientHeight ){
+				hauteur = document.documentElement.clientHeight;
+			}
+    		document.getElementById(bloc).style.height = hauteur+"px";
+    	}
+
 		// On load
 		window.onload = function(){
+
+			// height ---------------
+			//height("conteneur");
 
 			// Declarations ---------------
 			// Elements
 			var canvasWebcam = document.getElementById("canvasWebcam");
 			var video = document.getElementById('video');
 			var myImage = document.getElementById('myImage');
+			var img_target = document.getElementById('target');
 			// Size
 			var size_img = 100;
 			var size_img_2 = size_img/2;
 			// Image target
-			var img_target = new Image();
+			/*var img_target = new Image();
 			img_target.src = "target.png";
 			img_target.width = size_img;
-			img_target.height = size_img;
+			img_target.height = size_img;*/
 			// window URL
 			window.URL = window.URL || window.webkitURL;
 			// getUSerMedia
@@ -118,6 +135,9 @@
 			}
 		}
 
+		// On resize
+		//window.onresize = function(){ height("conteneur") };
+
 		</script>
 
 		<!-- Fields -->
@@ -135,7 +155,6 @@
 
 		<!-- Buttons -->
 		<div class="element" id ="buttons">
-			<br/>
 			<button id="save" onclick="">Save</button>
 			<button id="shoot" onclick="shoot()">Shoot</button>
 			<button id="reset" onclick="reset()">Reset</button>
