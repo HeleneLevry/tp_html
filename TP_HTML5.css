@@ -67,7 +67,34 @@ button{
 button:hover{
 	background-color: #8C8994;
 }
+#lien{
+	-moz-appearance:button;
+	appearance:button;
 
+	text-decoration: none;
+
+	text-align: center;
+	background-color: #615d6c;
+	color: #acedff;
+	font-size: 1em;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 60px;
+	padding-right: 60px;
+	margin: 10px;
+	border-top-color: #dddddd;
+	border-left-color: #dddddd ;
+	border-bottom-color: #898989;
+    border-right-color: #898989;
+    border-style: solid;
+    border-width: 2px;
+}
+
+#lien:hover{
+	background-color: #8C8994;
+
+}
 #conteneur_body_column{
 	height: 100%;
 	width: 100%;
