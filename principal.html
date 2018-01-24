@@ -156,6 +156,7 @@
 		<!-- Buttons -->
 		<div class="element" id ="buttons">
 			<button id="save" onclick="save()">Save</button>
+			<a id="lien"> Save </a>
 			<button id="shoot" onclick="shoot()">Shoot</button>
 			<button id="reset" onclick="reset()">Reset</button>
 		</div>  
@@ -211,9 +212,9 @@
 		}
 
 		function save(){
-			this.href= myImage;
-			this.download = "test.png";
-
+			var lien = document.getElementById("lien");
+			lien.href=myImage.src;
+			lien.download="test.png";
 		}
 
 		// Filter by pixel
@@ -227,7 +228,9 @@
 	            //pixels[i + 3] = 0; // alpha           
 	          }
 	          ctx.putImageData(currentImage,0, 0);*/
-
+	    document.getElementById('lien').addEventListener('click', function() {
+   				save();
+			}, false);
 		</script>
 
 	</div>
