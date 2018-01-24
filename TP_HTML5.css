@@ -8,9 +8,6 @@ body{
 	font-family: Verdana, Georgia, Trebuchet, Arial, sans-serif;
 	font-style: normal;
 	font-weight: normal;
-	/*display : flex;
-	justify-content : center;
-	flex-direction : column;*/
 }
 
 h1{
@@ -71,25 +68,30 @@ button:hover{
 	background-color: #8C8994;
 }
 
-#conteneur{
+#conteneur_body_column{
 	height: 100%;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	justify-content: space-around; /*space-around; /*center*/
-	align-items: center;
+	justify-content: space-around;
+	align-items: center;	
 }
 
-#geolocation{
-	text-align: left;
+.element_conteneur_body{
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	text-align: left;
+	margin: 10px 20px 10px 20px;
 }
 
-.element{
-	margin: 5px 20px 5px 20px;
+.element_column{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	text-align: left;
+	margin: 0px 20px 0px 20px;
 }
 
 #canvasWebcam{
@@ -98,12 +100,4 @@ button:hover{
 
 #myImage{
 	border: 3px solid #8C8994;
-}
-
-#target{
-	display: none;
-	opacity: 0.2;
-	filter: alpha(opacity=20);
-	width: 100px;
-	height: 100px;
 }
