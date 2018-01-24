@@ -41,6 +41,7 @@
 
 		<!-- Script onload -->
 		<script type="text/javascript">
+			var shooted = false;
 
 		// height 100% navigator ---------------
 		function height(bloc){
@@ -155,8 +156,8 @@
 
 		<!-- Buttons -->
 		<div class="element" id ="buttons">
-			<button id="save" onclick="save()">Save</button>
-			<a id="lien"> Save </a>
+			<button id="save" onclick="notshooted()">Save</button>
+			<a id="lien" style="display: none;"> Save </a>
 			<button id="shoot" onclick="shoot()">Shoot</button>
 			<button id="reset" onclick="reset()">Reset</button>
 		</div>  
@@ -169,6 +170,8 @@
 		var longitude = document.getElementById("longitude");
 		var dat = document.getElementById("dat");
 		var time = document.getElementById("time");
+		var lien = document.getElementById("lien");
+		var butsave=document.getElementById("save");
 
 		// getLocation ---------------
 		function getLocation() {
@@ -202,6 +205,9 @@
 		function shoot(){
 			getLocation();
 			snapshot();
+			lien.style="display:flex;";
+			butsave.style="display:none;";
+
 		}
 
 		// reset ---------------
@@ -209,12 +215,17 @@
 			canvasWebcam.style="display:flex;"
 			myImage.style="display:none;"
 			geoloc.style="display:none;";
+			butsave.style="display:flex;";
+			lien.style="display:none;";
 		}
 
-		function save(){
-			var lien = document.getElementById("lien");
-			lien.href=myImage.src;
-			lien.download="test.png";
+		function save(source,titre){
+			lien.href=source;
+			lien.download=titre;
+		}
+
+		function notshooted(){
+			alert("Veuillez prendre une photo avant de la sauver");
 		}
 
 		// Filter by pixel
@@ -229,7 +240,7 @@
 	          }
 	          ctx.putImageData(currentImage,0, 0);*/
 	    document.getElementById('lien').addEventListener('click', function() {
-   				save();
+	    		save(myImage.src,"photo.png");
 			}, false);
 		</script>
 
