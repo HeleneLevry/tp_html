@@ -236,9 +236,7 @@
 		function setFilterInit(){
 			if (shooted){
 				alreadyShooted();
-				
 			}
-			console.log(shooted);
 			filterSet = 0;
 		}
 		function setFilterRed(){
@@ -248,19 +246,19 @@
 			filterSet = 1;
 		}
 		function setFilterGreen(){
-			if (shooted == true){
+			if (shooted){
 				alreadyShooted();
 			}
 			filterSet = 2;
 		}
 		function setFilterBlue(){
-			if (shooted == true){
+			if (shooted){
 				alreadyShooted();
 			}
 			filterSet = 3;
 		}
 		function setFilterGrey(){
-			if (shooted = true){
+			if (shooted){
 				alreadyShooted();
 			}
 			filterSet = 4;
@@ -272,7 +270,7 @@
 				navigator.geolocation.getCurrentPosition(showPosition);
 			}
 			else {
-				geoloc.innerHTML="Geolocation is not supported by this browser.";
+				geolocation.innerHTML="Geolocation is not supported by this browser.";
 			}
 		}
 
